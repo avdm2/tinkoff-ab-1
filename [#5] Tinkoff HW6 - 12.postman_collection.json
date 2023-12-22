@@ -1,0 +1,411 @@
+{
+	"info": {
+		"_postman_id": "92ffdfc1-7c7e-4153-84ca-1d3224b0660f",
+		"name": "[#5] Tinkoff HW6 - 12",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27662426"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "signup - Регистрация",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"test_uuid\",\r\n    \"password\": \"password\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/notes/auth/signUp",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"notes",
+								"auth",
+								"signUp"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "signin - Вход",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"test_uuid\",\r\n    \"password\": \"password\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/notes/auth/signIn",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"notes",
+								"auth",
+								"signIn"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "note_sharing",
+			"item": [
+				{
+					"name": "createToken - Создание токена для шеринга",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VydHI5OW5hbWUxMiIsImlhdCI6MTcwMTM2MjY4MSwiZXhwIjoxNzAxMzYzODgxfQ.v_Bb6q-FcN_9gWvzEARa8rUptEiUjEk7p-SKc5ilfzA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/notes/tokens/b5399a86-36b7-4430-8736-52c60fa4ae34",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"notes",
+								"tokens",
+								"b5399a86-36b7-4430-8736-52c60fa4ae34"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getByTokenKey - Получение заметки по ключу токена",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEyIiwiaWF0IjoxNzAxMzYyNzM1LCJleHAiOjE3MDEzNjM5MzV9.BD_Zrf89Qo4vCYldqv3-CuUPsSGrt3q8Et1K5mgdL04",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/notes/tokens/0927E54FdA3972829-4dc-4815Aa245472103716ea-111-A21eAC15b9A273497e8",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"notes",
+								"tokens",
+								"0927E54FdA3972829-4dc-4815Aa245472103716ea-111-A21eAC15b9A273497e8"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "notes",
+			"item": [
+				{
+					"name": "createNote - Создание заметки",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0X3V1aWQiLCJpYXQiOjE3MDI3NjY2NjgsImV4cCI6MTcwMjc2Nzg2OH0.wMdojJ9Ndhi6MH8zjW4iXAW7B43iQZBCrVhjjXDjzIA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"{{$randomBankAccountName}}\",\r\n    \"login\": \"{{$randomEmail}}\",            // optional\r\n    \"password\": \"{{$randomPassword}}\",\r\n    \"url\": \"{{$randomUrl}}\",                // optional\r\n    \"directoryUUID\": \"b7e9e6be-f158-4818-8b61-2bedbcc4cfcf\"            // optional\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/notes/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"notes",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getNote - Получение заметки",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0X3V1aWQiLCJpYXQiOjE3MDI3NjY2NjgsImV4cCI6MTcwMjc2Nzg2OH0.wMdojJ9Ndhi6MH8zjW4iXAW7B43iQZBCrVhjjXDjzIA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/notes/84c81d73-2f50-4819-8436-76628e126471",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"notes",
+								"84c81d73-2f50-4819-8436-76628e126471"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getNotes - Получение всех заметок",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0X3V1aWQiLCJpYXQiOjE3MDI3NjY2NjgsImV4cCI6MTcwMjc2Nzg2OH0.wMdojJ9Ndhi6MH8zjW4iXAW7B43iQZBCrVhjjXDjzIA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/notes/list?pageNumber=1&pageSize=10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"notes",
+								"list"
+							],
+							"query": [
+								{
+									"key": "pageNumber",
+									"value": "1"
+								},
+								{
+									"key": "pageSize",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateNote - Обновление заметки",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0X3V1aWQiLCJpYXQiOjE3MDI3NjY2NjgsImV4cCI6MTcwMjc2Nzg2OH0.wMdojJ9Ndhi6MH8zjW4iXAW7B43iQZBCrVhjjXDjzIA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"{{$randomBankAccountName}}\",   // optional\r\n    \"login\": \"{{$randomEmail}}\",            // optional\r\n    \"password\": \"{{$randomPassword}}\",      // optional\r\n    \"url\": \"{{$randomUrl}}\",                // optional\r\n    \"directoryUUID\": \"6f22e1f1-5c4b-428e-bd3b-fe2580375d26\"      // optional\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/notes/84c81d73-2f50-4819-8436-76628e126471",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"notes",
+								"84c81d73-2f50-4819-8436-76628e126471"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getNotesInDirectory - Получение всех заметок в папке",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0X3V1aWQiLCJpYXQiOjE3MDI3NjY2NjgsImV4cCI6MTcwMjc2Nzg2OH0.wMdojJ9Ndhi6MH8zjW4iXAW7B43iQZBCrVhjjXDjzIA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/notes/list/b7e9e6be-f158-4818-8b61-2bedbcc4cfcf?pageNumber=1&pageSize=10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"notes",
+								"list",
+								"b7e9e6be-f158-4818-8b61-2bedbcc4cfcf"
+							],
+							"query": [
+								{
+									"key": "pageNumber",
+									"value": "1"
+								},
+								{
+									"key": "pageSize",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "directories",
+			"item": [
+				{
+					"name": "getDirectories - Получение всех папок",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0X3V1aWQiLCJpYXQiOjE3MDI3NjY2NjgsImV4cCI6MTcwMjc2Nzg2OH0.wMdojJ9Ndhi6MH8zjW4iXAW7B43iQZBCrVhjjXDjzIA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/directories/list/b7e9e6be-f158-4818-8b61-2bedbcc4cfcf",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"directories",
+								"list",
+								"b7e9e6be-f158-4818-8b61-2bedbcc4cfcf"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createDirectory - Создание папки",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0X3V1aWQiLCJpYXQiOjE3MDI3NjY2NjgsImV4cCI6MTcwMjc2Nzg2OH0.wMdojJ9Ndhi6MH8zjW4iXAW7B43iQZBCrVhjjXDjzIA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"{{$randomWord}}\",\r\n    \"parentDirectoryUUID\": \"62a97791-0cf0-4704-90d2-bd3ec8eadce0\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/directories/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"directories",
+								"create"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
